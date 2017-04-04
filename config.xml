@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.varbrad.movii" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Movii</name>
+    <description>
+        An app to find films screening in nearby cinemas and locations, and to also notify you of upcoming showings of both TV shows and movies.
+    </description>
+    <author href="https://bradlab.co.uk/">
+        Brad Davies
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#263238" />
+    <preference name="StatusBarStyle" value="blacktranslucent" />
+    <plugin name="cordova-plugin-splashscreen" />
+    <plugin name="cordova-plugin-statusbar" />
+</widget>
