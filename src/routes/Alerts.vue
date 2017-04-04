@@ -1,10 +1,12 @@
 <template>
   <div class="alerts">
-    <p>ALERTS</p>
+    <bar-link text="Alerts"></bar-link>
   </div>
 </template>
 
 <script>
+import BarLink from '@/components/BarLink'
+
 export default {
   name: 'Alerts',
   data () {
@@ -13,7 +15,7 @@ export default {
     }
   },
   components: {
-    
+    BarLink
   }
 }
 </script>

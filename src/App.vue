@@ -83,25 +83,23 @@ html, body, .app {
 }
 
 .slide-right-enter-active, .slide-right-leave-active {
-  transition: transform 200ms ease-out, opacity 300ms ease-out;
+  transition: opacity 200ms ease-out;
 }
 .slide-right-enter {
-  transform: translateX(-100vw) scale(0.5);
+  opacity: 0;
 }
 
 .slide-right-leave-to /* .fade-leave-active in <2.1.8 */ {
-  transform: translateX(100vw) scale(0.5);
+  opacity: 0;
 }
 
 .slide-left-enter-active, .slide-left-leave-active {
-  transition: transform 200ms ease-out, opacity 200ms ease-out;
+  transition: opacity 200ms ease-out;
 }
 .slide-left-enter {
-  transform: scale(1.5);
   opacity: 0;
 }
 .slide-left-leave-to /* .fade-leave-active in <2.1.8 */ {
-  transform: scale(0.5);
   opacity: 0;
 }
 </style>
