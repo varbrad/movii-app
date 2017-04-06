@@ -3,7 +3,6 @@
     <div @click="focusInput">
       <i class="fa fa-search fa-fw"></i>
       <input ref="input" type="text" v-model="query" placeholder="Search" @keypress="debounceSearch" @keypress.enter="$refs.input.blur()">
-      <i class="fa fa-chevron-right fa-fw"></i>
     </div>
   </div>
 </template>
@@ -22,19 +21,17 @@ export default {
   data () {
     return {
       query: '',
-      loading: false,
-      results: []
+      lastSent: ''
     }
   },
   methods: {
     focusInput () {
       this.$refs.input.focus()
     },
-    search () {
-      // Search here!
-    },
     debounceSearch: _.debounce(function () {
-      this.search()
+      if (this.query === this.lastSent) return
+      this.lastSent = this.query
+      this.$emit('input', this.query)
     }, 500)
   },
   mounted () {

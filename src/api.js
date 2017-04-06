@@ -8,7 +8,7 @@ export default {
   language: 'en-GB',
   include_adult: false,
 
-  discover () {
+  discover (page) {
     return axios.get('https://api.themoviedb.org/3/discover/movie', {
       params: {
         api_key: this.api_key,
@@ -17,7 +17,17 @@ export default {
         include_video: this.include_video,
 
         sort_by: 'popularity.desc',
-        page: 1
+        page: page || 1
+      }
+    })
+  },
+
+  search (query, page) {
+    return axios.get('https://api.themoviedb.org/3/search/movie', {
+      params: {
+        api_key: this.api_key,
+        query: query,
+        page: page || 1
       }
     })
   }

@@ -4,14 +4,17 @@
       <i class="fa fa-fw fa-home icon"></i>
       Home
     </router-link>
+    <hr>
     <router-link to="/featured" class="router-link" exact>
       <i class="fa fa-fw fa-certificate icon"></i>
       Featured
     </router-link>
+    <hr>
     <router-link to="/search" class="router-link" exact>
       <i class="fa fa-fw fa-search icon"></i>
       Search
     </router-link>
+    <hr>
     <router-link to="/alerts" class="router-link" exact>
       <i class="fa fa-fw fa-bell icon"></i>
       Alerts
@@ -21,15 +24,7 @@
 
 <script>
 export default {
-  name: 'AppNav',
-  data () {
-    return {
-      test: 123
-    }
-  },
-  components: {
-    
-  }
+  name: 'AppNav'
 }
 </script>
 
@@ -38,13 +33,20 @@ export default {
   display: flex;
   background: linear-gradient(14deg, rgba(255, 255, 255, .13), rgba(255, 255, 255, .09));
 
+  > hr {
+    border: none;
+    border-left: 1px solid rgba(0, 0, 0, .1);
+    margin: 6px 0;
+  }
+
   > a.router-link {
+    transition: color 300ms ease-out;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     flex: 1;
     align-items: center;
-    color: rgba(255, 255, 255, .75);
+    color: rgba(255, 255, 255, .65);
     padding: .5rem;
     font-size: .65rem;
     font-weight: 400;
@@ -58,7 +60,7 @@ export default {
 
     &.active {
       color: white;
-      text-shadow: 0 0px 9px rgba(255, 255, 255, .5);
+      text-shadow: 0 0 3px rgba(0, 0, 0, .5), 0 0 12px rgba(255, 255, 255, .8);
       font-weight: 700;
 
       > .icon {

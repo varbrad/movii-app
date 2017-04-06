@@ -67,19 +67,19 @@ html, body, .app {
       height: 100%;
       overflow-x: hidden;
       overflow-y: auto;
-
-      &::-webkit-scrollbar {
-        width: 12px;
-        color: red;
-        background: rgba(0, 0, 0, .2);
-      }
-      &::-webkit-scrollbar-thumb {
-        border: 3px solid #272728;
-        background-color: rgba(255, 255, 255, .2);
-        border-radius: 99px;
-      }
     }
   }
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  color: red;
+  background: rgba(0, 0, 0, .2);
+}
+::-webkit-scrollbar-thumb {
+  border: 3px solid #272728;
+  background-color: rgba(255, 255, 255, .2);
+  border-radius: 99px;
 }
 
 .slide-right-enter-active, .slide-right-leave-active {
