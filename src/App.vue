@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <main>
-      <transition :name="routerTransition">
+      <transition name="slide-left">
         <router-view class="router-view"></router-view>
       </transition>
     </main>
@@ -14,19 +14,6 @@ import AppNav from '@/components/AppNav'
 
 export default {
   name: 'App',
-  data () {
-    return {
-      routerTransition: 'slide-right'
-    }
-  },
-  watch: {
-    '$route' (to, from) {
-      const toDepth = to.path.split('/').length
-      const fromDepth = to.path.split('/').length
-      this.routerTransition = toDepth < fromDepth ? 'slide-right' : 'slide-left'
-      console.log(this.routerTransition)
-    }
-  },
   components: {
     AppNav
   }
@@ -72,25 +59,14 @@ html, body, .app {
 }
 
 ::-webkit-scrollbar {
+  position: absolute;
+  right: 0;
   width: 12px;
-  color: red;
-  background: rgba(0, 0, 0, .2);
 }
 ::-webkit-scrollbar-thumb {
   border: 3px solid #272728;
   background-color: rgba(255, 255, 255, .2);
   border-radius: 99px;
-}
-
-.slide-right-enter-active, .slide-right-leave-active {
-  transition: opacity 200ms ease-out;
-}
-.slide-right-enter {
-  opacity: 0;
-}
-
-.slide-right-leave-to /* .fade-leave-active in <2.1.8 */ {
-  opacity: 0;
 }
 
 .slide-left-enter-active, .slide-left-leave-active {

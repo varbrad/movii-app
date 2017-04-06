@@ -7,10 +7,12 @@ import api from '@/api'
 import App from '@/App'
 
 // Routes
+import Alerts from '@/routes/Alerts'
 import Home from '@/routes/Home'
 import Featured from '@/routes/Featured'
+import Movie from '@/routes/Movie'
+import MyCinema from '@/routes/MyCinema'
 import Search from '@/routes/Search'
-import Alerts from '@/routes/Alerts'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -21,16 +23,13 @@ const vm = new Vue({
     linkActiveClass: 'active',
     routes: [
       { path: '/', component: Home },
+      { path: '/alerts', component: Alerts },
       { path: '/featured', component: Featured },
-      { path: '/search', component: Search },
-      { path: '/alerts', component: Alerts }
+      { path: '/movie/:id', component: Movie },
+      { path: '/my-cinema', component: MyCinema },
+      { path: '/search', component: Search }
     ]
-  }),
-  methods: {
-    backButton (e) {
-      console.log(e)
-    }
-  }
+  })
 })
 
 function init (e) {

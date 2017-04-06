@@ -1,8 +1,8 @@
 <template>
   <div class="featured">
     <template v-if="loaded">
+      <bar-link text="Featured"></bar-link>
       <div class="content">
-        <bar-link text="Featured"></bar-link>
         <template v-for="movie in popularMovies">
           <movie-card :movie="movie"></movie-card>
         </template>
@@ -52,6 +52,9 @@ export default {
 
   > .content {
     flex: 1;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 }
 </style>

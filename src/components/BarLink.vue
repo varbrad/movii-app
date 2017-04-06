@@ -21,10 +21,11 @@ export default {
 .bar-link {
   display: flex;
   padding: 1rem;
-  background: linear-gradient(14deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.08));
+  background: linear-gradient(14deg, rgba(238, 244, 255, 0.13), rgba(238, 244, 255, 0.08));
 
   > .full-flex {
     flex: 1;
+    font-weight: bold;
   }
 }
 </style>

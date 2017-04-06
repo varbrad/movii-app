@@ -3,12 +3,19 @@
     <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
       <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
     </svg>
+    <p v-if="text">{{ text }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'FullSpinner'
+  name: 'FullSpinner',
+  props: {
+    text: {
+      required: false,
+      default: null
+    }
+  }
 }
 </script>
 
@@ -19,6 +26,7 @@ $offset: 187;
 .full-spinner {
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
@@ -33,6 +41,10 @@ $offset: 187;
         dash $duration ease-in-out infinite,
         colours ($duration*4) ease-in-out infinite;
     }
+  }
+
+  > p {
+    padding-top: .5rem;
   }
 }
 

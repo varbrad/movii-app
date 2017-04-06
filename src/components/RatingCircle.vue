@@ -1,8 +1,11 @@
 <template>
-  <svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="20" cy="20" r="17" fill="rgba(0, 0, 0, .5)" stroke="rgba(255, 255, 255, .2)" stroke-width="6"/>
-    <circle class="path" cx="20" cy="20" r="17" fill="none" :stroke="color" stroke-linecap="round" stroke-width="6" :stroke-dasharray="total" :stroke-dashoffset="fixed"/>
-  </svg>
+  <div class="rating-circle">
+    <svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" r="17" fill="rgba(0, 0, 0, .5)" stroke="rgba(255, 255, 255, .2)" stroke-width="6"/>
+      <circle class="path" cx="20" cy="20" r="17" fill="none" :stroke="color" stroke-linecap="round" stroke-width="6" :stroke-dasharray="total" :stroke-dashoffset="fixed"/>
+    </svg>
+    <p>{{ rating * 10 }}</p>
+  </div>
 </template>
 
 <script>
@@ -30,6 +33,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.rating-circle {
+  position: relative;
+  display: flex;
+
+  > p {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    font-weight: bold;
+  }
+}
+
 svg {
   transform: rotate(-90deg);
 }

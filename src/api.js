@@ -30,5 +30,27 @@ export default {
         page: page || 1
       }
     })
+  },
+
+  movie (id) {
+    return axios.get('https://api.themoviedb.org/3/movie/' + id, {
+      params: {
+        api_key: this.api_key,
+        language: 'en-GB'
+      }
+    })
+  },
+
+  geoToPostcode (coords) {
+    return axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+      params: {
+        key: 'AIzaSyCs1bjnlSbyiZQSXs8nq6uafXmWqmY5A28',
+        latlng: coords.latitude + ',' + coords.longitude
+      }
+    })
+  },
+
+  localCinemas (postcode) {
+    return axios.get('https://crossorigin.me/http://moviesapi.herokuapp.com/cinemas/find/' + postcode)
   }
 }

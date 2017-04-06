@@ -15,6 +15,10 @@
       Search
     </router-link>
     <hr>
+    <router-link to="/my-cinema" class="router-link" exact>
+      <i class="fa fa-fw fa-ticket icon"></i>
+      My Cinema
+    </router-link>
     <router-link to="/alerts" class="router-link" exact>
       <i class="fa fa-fw fa-bell icon"></i>
       Alerts

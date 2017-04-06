@@ -1,9 +1,9 @@
 <template>
   <div class="search">
     <search-bar focus="true" v-on:input="search"></search-bar>
-    <div class="results">
-      <full-spinner v-if="fetching"></full-spinner>
-      <template v-else v-for="movie in results">
+    <full-spinner v-if="fetching"></full-spinner>
+    <div v-else="!fetching" class="results">
+      <template v-for="movie in results">
         <movie-card :key="movie.id" :movie="movie"></movie-card>
       </template>
       <template v-if="!!query && results.length == 0">
