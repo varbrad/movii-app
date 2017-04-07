@@ -39,10 +39,6 @@ export default {
     ErrorReport,
     FullSpinner
   },
-  mounted () {
-    // Get GPS position
-    console.log(this.$data)
-  },
   methods: {
     reload () {
       this.beginFind()
