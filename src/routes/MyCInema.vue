@@ -31,7 +31,7 @@ export default {
       error: false,
       errorMessage: 'Generic error (204)',
       cinemas: JSON.parse(window.localStorage.getItem('my-cinemas')),
-      chosen: window.localStorage.getItem('my-cinema')
+      chosen: Number(window.localStorage.getItem('my-cinema'))
     }
   },
   components: {
@@ -41,6 +41,7 @@ export default {
   },
   mounted () {
     // Get GPS position
+    console.log(this.$data)
   },
   methods: {
     reload () {
