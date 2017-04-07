@@ -78,4 +78,46 @@ html, body, .app {
 .slide-left-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
 }
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 500ms
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0
+}
+
+button.button {
+  flex-shrink: 0;
+  padding: .5rem 1rem;
+  margin: .5rem;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  border-radius: 99px;
+  border: 2px solid rgba(255, 255, 255, .4);
+  background-color: rgba(255, 255, 255, .1);
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 0 9px rgba(0, 0, 0, .2);
+  outline: none;
+  font-size: .8rem;
+  box-shadow: inset 1px 1px 9px rgba(255, 255, 255, .2), inset -1px -1px 9px rgba(0, 0, 0, .2);
+
+  &.small {
+    font-size: .7rem;
+    border-width: 1px;
+    border-radius: 3px;
+    background-color: transparent;
+    padding: .25rem .5rem;
+    margin: .25rem;
+  }
+
+  &.tall {
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+  }
+
+  &.active {
+    background-color: rgba(255, 255, 255, .9);
+    color: black;
+  }
+}
 </style>

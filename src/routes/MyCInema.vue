@@ -1,11 +1,16 @@
 <template>
   <div class="my-cinema">
     <bar-link text="My Cinema"></bar-link>
-    <full-spinner v-if="fetching" :text="fetchingMessage"></full-spinner>
-    <error-report v-if="error" :text="errorMessage" icon="fa-exclamation-triangle"></error-report>
-    <div v-if="!fetching && !error" class="content">
-      <button v-if="!fetching" @click="beginFind">Fetch Cinemas</button>
-      <p v-for="cinema in cinemas">{{ cinema.name }}</p>
+    <full-spinner v-if="fetching && !error" :text="fetchingMessage"></full-spinner>
+    <error-report v-if="error && !fetching" @button="reload" :text="errorMessage" icon="fa-exclamation-triangle"></error-report>
+    <div v-if="!fetching && !error" class="content" :class="{ centerMe: cinemas == null}">
+      <button class="button" v-if="!fetching" @click="beginFind"><i class="fa fa-film"></i> {{ cinemas ? 'Update Local Cinemas' : 'Find Local Cinemas' }}</button>
+      <div class="cinema" v-for="(cinema, i) in cinemas">
+        <p><b>{{ i + 1 }}.</b> {{ cinema.name }}</p>
+        <button class="button small tall" :class="{ active : chosen === cinema.venue_id }" @click="setCinema(cinema)">
+          {{ chosen !== cinema.venue_id ? 'Set As My Cinema' : 'My Cinema' }}
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -23,9 +28,10 @@ export default {
     return {
       fetching: false,
       fetchingMessage: '',
-      error: true,
+      error: false,
       errorMessage: 'Generic error (204)',
-      cinemas: JSON.parse(window.localStorage.getItem('my-cinema'))
+      cinemas: JSON.parse(window.localStorage.getItem('my-cinemas')),
+      chosen: window.localStorage.getItem('my-cinema')
     }
   },
   components: {
@@ -37,8 +43,13 @@ export default {
     // Get GPS position
   },
   methods: {
+    reload () {
+      this.beginFind()
+    },
+
     beginFind () {
       this.fetching = true
+      this.error = false
       this.fetchingMessage = 'Getting GPS location'
       navigator.geolocation.getCurrentPosition(this.getPosition, this.getPositionError, {
         timeout: 5000,
@@ -71,8 +82,8 @@ export default {
       this.fetchingMessage = 'Finding local cinemas'
       api.localCinemas(postcode)
       .then(response => {
-        window.localStorage.setItem('my-cinema', JSON.stringify(response.data))
-        this.cinemas = response.data
+        this.cinemas = this.cleanUp(response.data)
+        window.localStorage.setItem('my-cinemas', JSON.stringify(this.cinemas))
         this.fetching = false
       })
       .catch(error => {
@@ -80,6 +91,26 @@ export default {
         this.error = true
         this.errorMessage = 'Could not find local cinemas'
       })
+    },
+
+    cleanUp (object) {
+      for (let i = 0; i < object.length; ++i) {
+        let o = object[i]
+        delete o.address
+        delete o.distance
+        delete o.url
+        o.venue_id = Number(o.venue_id)
+        o.name = o.name[o.name.length - 1] === ',' ? o.name.slice(0, o.name.length - 1) : o.name
+      }
+      return object
+    },
+
+
+    setCinema (cinema) {
+      let val = Number(cinema.venue_id)
+      if (val === this.chosen) return
+      this.chosen = val
+      window.localStorage.setItem('my-cinema', this.chosen)
     }
   }
 }
@@ -93,8 +124,38 @@ export default {
 
   > .content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     overflow-x: hidden;
     overflow-y: auto;
+
+    &.centerMe {
+      justify-content: center;
+    }
+
+    > .cinema {
+      width: 100%;
+      flex-shrink: 0;
+      display: flex;
+      overflow: hidden;
+      align-items: center;
+      justify-content: space-between;
+      padding: .25rem;
+
+      > p {
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        flex-shrink: 1;
+        text-indent: .25rem;
+        overflow: hidden;
+      }
+
+      &:nth-child(odd) {
+        background-color: rgba(255, 255, 255, .05);
+      }
+    }
   }
 }
 </style>

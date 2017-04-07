@@ -2,6 +2,7 @@
   <div class="error-report">
     <i v-if="icon" class="fa fa-5x" :class="icon"></i>
     <p>{{ text }}</p>
+    <button class="button" @click="$emit('button')">Reload</button>
   </div>
 </template>
 
@@ -36,10 +37,10 @@ export default {
 }
 
 @keyframes popIn {
-  from {
+  0% {
     transform: scale(0) rotate(360deg);
   }
-  to {
+  100% {
     transform: scale(1) rotate(0deg);
   }
 }
