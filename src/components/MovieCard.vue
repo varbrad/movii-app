@@ -43,6 +43,10 @@ export default {
   background-color: rgba(233, 244, 255, .04);
   box-shadow: 0 3px 6px rgba(0, 0, 0, .5);
 
+  &:first-child, &:last-child {
+    margin: 0;
+  }
+
   > .backdrop {
     width: 100%;
   }
