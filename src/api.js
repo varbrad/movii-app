@@ -8,8 +8,10 @@ export default {
   language: 'en-GB',
   include_adult: false,
 
+  discoverCache: null,
   discover (page) {
-    return axios.get('https://api.themoviedb.org/3/discover/movie', {
+    if (this.discoverCache) return this.discoverCache
+    this.discoverCache = axios.get('https://api.themoviedb.org/3/discover/movie', {
       params: {
         api_key: this.api_key,
         language: this.language,
@@ -20,6 +22,7 @@ export default {
         page: page || 1
       }
     })
+    return this.discoverCache
   },
 
   search (query, page) {
@@ -52,5 +55,12 @@ export default {
 
   localCinemas (postcode) {
     return axios.get('https://crossorigin.me/http://moviesapi.herokuapp.com/cinemas/find/' + postcode)
+  },
+
+  onTodayCache: null,
+  onToday (venueID) {
+    if (this.onTodayCache) return this.onTodayCache
+    this.onTodayCache = axios.get('https://crossorigin.me/http://moviesapi.herokuapp.com/cinemas/' + venueID + '/showings')
+    return this.onTodayCache
   }
 }

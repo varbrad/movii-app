@@ -73,6 +73,7 @@ export default {
       this.fetching = false
       this.error = true
       this.errorMessage = 'Could not get GPS position'
+      console.error(error)
     },
 
     findCinemas (postcode) {
