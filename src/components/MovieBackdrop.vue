@@ -20,9 +20,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.movie-backdrop {
+  z-index: 2;
+}
+
 .movie-backdrop > img {
   width: 100%;
-  height: 50vw;
+  height: 55vw;
 }
 
 .no-backdrop {

@@ -22,6 +22,8 @@ export default {
   display: flex;
   padding: 1rem;
   background: linear-gradient(14deg, rgba(238, 244, 255, 0.13), rgba(238, 244, 255, 0.08));
+  flex-shrink: 0;
+  font-size: 1rem;
 
   > .full-flex {
     flex: 1;
