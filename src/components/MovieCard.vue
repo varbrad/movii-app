@@ -40,7 +40,8 @@ export default {
   flex-direction: column;
   overflow: hidden;
   margin: .5rem 0;
-  background-color: rgba(233, 244, 255, .04);
+  background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+  background-blend-mode: multiply;
   box-shadow: 0 3px 6px rgba(0, 0, 0, .5);
 
   &:first-child, &:last-child {

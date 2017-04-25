@@ -58,9 +58,11 @@ export default {
   },
 
   onTodayCache: null,
+  onTodayCinemaID: null,
   onToday (venueID) {
-    if (this.onTodayCache) return this.onTodayCache
+    if (this.onTodayCache && this.onTodayCinemaID === venueID) return this.onTodayCache
     this.onTodayCache = axios.get('https://crossorigin.me/http://moviesapi.herokuapp.com/cinemas/' + venueID + '/showings')
+    this.onTodayCinemaID = venueID
     return this.onTodayCache
   }
 }

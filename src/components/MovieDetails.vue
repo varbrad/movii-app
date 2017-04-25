@@ -4,6 +4,7 @@
     <div class="header">
       <img :src="'https://image.tmdb.org/t/p/w160_and_h240_bestv2' + movie.poster_path">
       <h1>{{ movie.title }} <span>({{ releaseYear }})</span></h1>
+      <rating-circle :rating="movie.vote_average"></rating-circle>
     </div>
     <div class="overview">
       <h1>Overview</h1>
@@ -14,12 +15,14 @@
 
 <script>
 import MovieBackdrop from '@/components/MovieBackdrop'
+import RatingCircle from '@/components/RatingCircle'
 
 export default {
   name: 'MovieDetails',
   props: ['movie'],
   components: {
-    MovieBackdrop
+    MovieBackdrop,
+    RatingCircle
   },
   computed: {
     releaseYear () {
@@ -39,7 +42,7 @@ export default {
   .header {
     background-image: linear-gradient(25deg, #09203f 0%, #537895 100%);
     margin-top: -7.2rem;
-    padding: 0 2rem 1rem 2rem;
+    padding: 0 1rem 1rem 1rem;
     display: flex;
     align-items: flex-end;
 

@@ -88,7 +88,7 @@ html, body, .app {
 
 button.button {
   flex-shrink: 0;
-  padding: .5rem 1rem;
+  padding: 1rem 2rem;
   margin: .5rem;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;

@@ -109,6 +109,7 @@ export default {
       if (val === this.chosen) return
       this.chosen = val
       window.localStorage.setItem('my-cinema', this.chosen)
+      window.localStorage.setItem('my-cinema-name', cinema.name)
     }
   }
 }

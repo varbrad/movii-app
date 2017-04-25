@@ -2,7 +2,7 @@
   <div class="rating-circle">
     <svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg">
       <circle cx="20" cy="20" r="17" fill="rgba(0, 0, 0, .5)" stroke="rgba(255, 255, 255, .2)" stroke-width="6"/>
-      <circle class="path" cx="20" cy="20" r="17" fill="none" :stroke="color" stroke-linecap="round" stroke-width="6" :stroke-dasharray="total" :stroke-dashoffset="fixed"/>
+      <circle ref="circle" class="path" cx="20" cy="20" r="17" fill="none" :stroke="color" stroke-linecap="round" stroke-width="6" :stroke-dasharray="total" stroke-dashoffset="107"/>
     </svg>
     <p>{{ rating * 10 }}</p>
   </div>
@@ -28,6 +28,9 @@ export default {
     color () {
       return 'hsl(' + (this.rating * 10) + ', 100%, 50%)'
     }
+  },
+  mounted () {
+    this.$refs.circle.setAttribute('stroke-dashoffset', this.fixed)
   }
 }
 </script>
@@ -53,5 +56,9 @@ export default {
 
 svg {
   transform: rotate(-90deg);
+
+  > circle.path {
+    transition: all 300ms ease-out;
+  }
 }
 </style>
