@@ -4,7 +4,7 @@
     <div class="header">
       <img :src="'https://image.tmdb.org/t/p/w160_and_h240_bestv2' + movie.poster_path">
       <h1>{{ movie.title }} <span>({{ releaseYear }})</span></h1>
-      <rating-circle :rating="movie.vote_average"></rating-circle>
+      <rating-circle class="rating-circle" :rating="movie.vote_average"></rating-circle>
     </div>
     <div class="overview">
       <h1>Overview</h1>
@@ -41,13 +41,13 @@ export default {
 
   .header {
     background-image: linear-gradient(25deg, #09203f 0%, #537895 100%);
-    margin-top: -7.2rem;
-    padding: 0 1rem 1rem 1rem;
+    padding: 1rem 1rem 1rem 1rem;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
 
     > img {
       width: 30vw;
+      margin-top: -8rem;
       margin-right: 1rem;
       border-radius: 5px;
       border: 3px solid rgba(0, 0, 0, .5);
@@ -60,6 +60,9 @@ export default {
       > span {
         color: rgba(255, 255, 255, .5);
       }
+    }
+    > .rating-circle {
+      margin-left: auto;
     }
   }
 
