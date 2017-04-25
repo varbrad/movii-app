@@ -7,7 +7,10 @@
         <movie-card :key="movie.id" :movie="movie"></movie-card>
       </template>
       <template v-if="!!query && results.length == 0">
-        <h1>NO RESULTS</h1>
+        <div class="content">
+          <i class="fa fa-frown-o fa-5x"></i>
+          <h1>No movies found...</h1>
+        </div>
       </template>
     </div>
   </div>
@@ -62,6 +65,24 @@ export default {
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
+
+    > .content {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      > i {
+        padding: .5rem;
+        color: rgba(255, 190, 0, .9);
+      }
+
+      > h1 {
+        font-size: 1rem;
+      }
+    }
   }
 }
 </style>

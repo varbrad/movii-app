@@ -60,6 +60,7 @@ export default {
   display: flex;
   flex-direction: column;
   color: white;
+  overflow: hidden;
 
   > .center {
     display: flex;
@@ -71,6 +72,11 @@ export default {
     > i {
       color: rgba(255, 50, 10, .9);
     }
+  }
+
+  > .content {
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 }
 </style>

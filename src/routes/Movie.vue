@@ -1,8 +1,10 @@
 <template>
   <div class="movie" v-if="movie">
     <bar-link :text="movie.title"></bar-link>
-    <movie-details :movie="movie"></movie-details>
-    <cinema-times :movie="movie"></cinema-times>
+    <div class="content">
+      <movie-details :movie="movie"></movie-details>
+      <cinema-times :movie="movie"></cinema-times>
+    </div>
   </div>
 </template>
 
@@ -43,5 +45,10 @@ export default {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
+  > .content {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 }
 </style>

@@ -70,17 +70,19 @@ html, body, .app {
 }
 
 .slide-left-enter-active, .slide-left-leave-active {
-  transition: opacity 200ms ease-out;
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
 }
 .slide-left-enter {
   opacity: 0;
+  transform: translateX(100%);
 }
 .slide-left-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
+  transform: translateX(-100%);
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 500ms
+  transition: opacity 500ms ease-out;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0
@@ -88,7 +90,7 @@ html, body, .app {
 
 button.button {
   flex-shrink: 0;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   margin: .5rem;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
