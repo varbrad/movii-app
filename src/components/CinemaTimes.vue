@@ -61,7 +61,7 @@ export default {
 
 <style lang="scss" scoped>
 .cinema-times {
-  background-image: linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%);
+  background-image: linear-gradient(25deg, #fa709a 0%, #fee140 100%);
   padding: 1rem;
 
   > h1 {

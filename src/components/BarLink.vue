@@ -21,7 +21,7 @@ export default {
 .bar-link {
   display: flex;
   padding: 1rem;
-  background-image: linear-gradient(to right, darken(#ff758c, 10%) 0%, darken(#ff7eb3, 10%) 100%);
+  background-image: linear-gradient(22deg, #ff0844 0%, #ffb199 100%);
   flex-shrink: 0;
   font-size: 1rem;
 

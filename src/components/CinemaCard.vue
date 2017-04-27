@@ -107,7 +107,7 @@ export default {
           padding: .5rem .25rem;
           margin: .2rem;
           background-image: linear-gradient(to right, darken(#ff758c, 15%) 0%, darken(#ff7eb3, 15%) 100%);
-          border: 1px solid rgba(255, 255, 255, .2);
+          border: 2px solid rgba(255, 255, 255, .5);
           border-radius: 3px;
 
           &.disabled {

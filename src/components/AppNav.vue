@@ -32,8 +32,10 @@ export default {
 <style lang="scss" scoped>
 .app-nav {
   display: flex;
-  background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
+  background: #ff0844;
   overflow: hidden;
+  z-index: 9;
+  box-shadow: 0 0 30px rgba(0, 0, 0, .2), 0 0 6px rgba(0, 0, 0, .2);
 
   > a.router-link {
     transition: all 300ms ease-out;
@@ -53,6 +55,7 @@ export default {
     > .icon {
       font-size: 2em;
       margin-bottom: .2rem;
+      transform: scale(0.9);
     }
 
     &.active {
@@ -61,7 +64,7 @@ export default {
 
       > .icon {
         animation: icon-scale 300ms ease-out 1;
-        transform: scale(1.2);
+        transform: scale(1.1);
       }
     }
   }
@@ -73,11 +76,11 @@ export default {
   }
 
   25% {
-    transform: scale(0.6);
+    transform: scale(0.4);
   }
 
   100% {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 }
 </style>
