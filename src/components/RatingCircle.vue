@@ -1,10 +1,10 @@
 <template>
   <div class="rating-circle">
     <svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="20" cy="20" r="17" fill="rgba(0, 0, 0, .5)" stroke="rgba(255, 255, 255, .2)" stroke-width="6"/>
+      <circle cx="20" cy="20" r="17" :fill="fill" :stroke="fillDark" stroke-width="6"/>
       <circle ref="circle" class="path" cx="20" cy="20" r="17" fill="none" :stroke="color" stroke-linecap="round" stroke-width="6" :stroke-dasharray="total" stroke-dashoffset="107"/>
     </svg>
-    <p>{{ rating * 10 }}</p>
+    <p>{{ getRating }}</p>
   </div>
 </template>
 
@@ -22,11 +22,20 @@ export default {
     }
   },
   computed: {
+    getRating () {
+      return this.rating ? this.rating * 10 : '?'
+    },
     fixed () {
       return (1 - (this.rating / 10)) * this.total
     },
     color () {
-      return 'hsl(' + (this.rating * 10) + ', 100%, 50%)'
+      return 'hsl(' + (this.rating * 10) + ', 100%, 45%)'
+    },
+    fill () {
+      return 'hsl(' + (this.rating * 10) + ', 100%, 15%)'
+    },
+    fillDark () {
+      return 'hsl(' + (this.rating * 10) + ', 100%, 25%)'
     }
   },
   mounted () {

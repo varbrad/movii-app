@@ -82,13 +82,15 @@ export default {
   }
 
   > .times {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: wrap;
 
     > span {
-      padding: .5rem 1rem;
+      text-align: center;
+      padding: 1rem 1rem;
       margin: .25rem;
       border-radius: 999px;
       background-color: rgba(0, 0, 0, .3);

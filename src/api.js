@@ -25,14 +25,17 @@ export default {
     return this.discoverCache
   },
 
+  searchCache: {},
   search (query, page) {
-    return axios.get('https://api.themoviedb.org/3/search/movie', {
+    if (this.searchCache[query]) return this.searchCache[query]
+    this.searchCache[query] = axios.get('https://api.themoviedb.org/3/search/movie', {
       params: {
         api_key: this.api_key,
         query: query,
         page: page || 1
       }
     })
+    return this.searchCache[query]
   },
 
   movie (id) {

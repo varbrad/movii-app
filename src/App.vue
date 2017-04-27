@@ -37,7 +37,7 @@ html, body, .app {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #272728;
+  background-color: #262732;
   color: white;
   max-height: 100vh;
   width: 100vw;
@@ -74,11 +74,10 @@ html, body, .app {
 }
 .slide-left-enter {
   opacity: 0;
-  transform: translateX(100%);
+  transform: scale(0.8);
 }
 .slide-left-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
-  transform: translateX(-100%);
 }
 
 .fade-enter-active, .fade-leave-active {

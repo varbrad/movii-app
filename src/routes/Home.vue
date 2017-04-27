@@ -1,10 +1,12 @@
 <template>
   <div class="home">
     <template v-if="myCinema">
+      <bar-link text="On Today"></bar-link>
       <template v-if="loaded">
-        <bar-link text="On Today"></bar-link>
         <div class="content">
-          <pre>{{ data }}</pre>
+          <template v-for="movie in movies">
+            <cinema-card :movie-data="movie"></cinema-card>
+          </template>
         </div>
       </template>
       <template v-else>
@@ -25,26 +27,28 @@
 import api from '@/api'
 
 import BarLink from '@/components/BarLink'
+import CinemaCard from '@/components/CinemaCard'
 import FullSpinner from '@/components/FullSpinner'
 
 export default {
   name: 'Home',
   components: {
     BarLink,
+    CinemaCard,
     FullSpinner
   },
   data () {
     return {
       loaded: false,
       myCinema: window.localStorage.getItem('my-cinema'),
-      data: null
+      movies: []
     }
   },
   mounted () {
     if (this.myCinema) {
       api.onToday(this.myCinema)
       .then(r => {
-        this.data = r.data
+        this.movies = r.data
         this.loaded = true
       })
       .catch(err => {
