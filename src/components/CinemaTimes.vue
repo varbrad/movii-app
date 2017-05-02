@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     addAlert (time) {
-      if (this.iTimeInPast(time)) return
+      if (this.isTimeInPast(time)) return
       this.$root.$emit('add-alert', this.movie, time)
     },
     isTimeInPast (time) {
