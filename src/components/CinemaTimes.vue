@@ -4,7 +4,7 @@
       <h1>{{ cinemaName }}</h1>
       <h2>Showtimes Today</h2>
       <div class="times">
-        <span v-for="time in times">{{ time }}</span>
+        <span v-for="time in times" :key="time" @click="addAlert(time)">{{ time }}</span>
       </div>
     </template>
     <template v-if="loaded && !isOn">
@@ -38,6 +38,11 @@ export default {
       times: null
     }
   },
+  methods: {
+    addAlert (time) {
+      this.$root.$emit('add-alert', this.movie, time)
+    }
+  },
   mounted () {
     let myCinema = window.localStorage.getItem('my-cinema')
     if (myCinema) {
@@ -45,7 +50,7 @@ export default {
       .then(r => {
         this.loaded = true
         r.data.forEach(m => {
-          if (this.movie.title.toLowerCase() === m.title.toLowerCase()) {
+          if (this.movie.title.toLowerCase() === m.title.toLowerCase() || (m.tmdb && m.tmdb.id === this.movie.id)) {
             this.isOn = true
             this.times = m.time
           }

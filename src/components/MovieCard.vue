@@ -4,7 +4,7 @@
       <movie-backdrop :movie="movie"></movie-backdrop>
       <div class="info">
         <p>{{ movie.title }}</p>
-        <div class="spacer"></div>      
+        <div class="spacer"></div>
         <p class="year">{{ year(movie.release_date) }}</p>
         <rating-circle :rating="movie.vote_average"></rating-circle>
       </div>
@@ -18,7 +18,14 @@ import RatingCircle from '@/components/RatingCircle'
 
 export default {
   name: 'MovieCard',
-  props: ['movie'],
+  props: {
+    movie: {
+      required: true
+    },
+    clickEnabled: {
+      default: true
+    }
+  },
   components: {
     MovieBackdrop,
     RatingCircle
@@ -28,7 +35,7 @@ export default {
       return release_date ? release_date.split('-')[0] : ''
     },
     gotoMovie () {
-      this.$router.push('/movie/' + this.movie.id)
+      if (this.clickEnabled) this.$router.push('/movie/' + this.movie.id)
     }
   }
 }

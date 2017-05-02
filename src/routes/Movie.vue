@@ -31,7 +31,6 @@ export default {
     api.movie(this.$route.params.id)
     .then(response => {
       this.movie = response.data
-      console.log(this.movie)
     })
     .catch(error => {
       console.warn(error)

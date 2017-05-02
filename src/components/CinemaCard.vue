@@ -50,10 +50,11 @@ export default {
     }
   },
   mounted () {
-    api.search(this.movieData.title)
-    .then(response => {
-      this.movie = response.data.results[0]
-    })
+    this.movie = this.movieData.tmdb
+    // api.search(this.movieData.title)
+    // .then(response => {
+    //   this.movie = response.data.results[0]
+    // })
   }
 }
 </script>

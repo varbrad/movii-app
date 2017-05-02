@@ -10,7 +10,7 @@
         </div>
       </template>
       <template v-else>
-        <full-spinner></full-spinner>
+        <full-spinner text="Finding movie showtimes"></full-spinner>
       </template>
     </template>
     <template v-else>

@@ -66,6 +66,16 @@ export default {
     if (this.onTodayCache && this.onTodayCinemaID === venueID) return this.onTodayCache
     this.onTodayCache = axios.get('https://crossorigin.me/http://moviesapi.herokuapp.com/cinemas/' + venueID + '/showings')
     this.onTodayCinemaID = venueID
-    return this.onTodayCache
+    return this.onTodayCache.then(r => {
+      var promises = []
+      r.data.forEach(m => {
+        promises.push(this.search(m.title).then(r2 => {
+          m.tmdb = r2.data.results[0]
+        }))
+      })
+      return Promise.all(promises).then(v => {
+        return r
+      })
+    })
   }
 }

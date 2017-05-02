@@ -4,19 +4,19 @@
       <i class="fa fa-fw fa-home icon"></i>
       Home
     </router-link>
-    <router-link to="/featured" class="router-link" exact>
+    <router-link to="/featured" class="router-link">
       <i class="fa fa-fw fa-certificate icon"></i>
       Featured
     </router-link>
-    <router-link to="/search" class="router-link" exact>
+    <router-link to="/search" class="router-link">
       <i class="fa fa-fw fa-search icon"></i>
       Search
     </router-link>
-    <router-link to="/my-cinema" class="router-link" exact>
+    <router-link to="/my-cinema" class="router-link">
       <i class="fa fa-fw fa-ticket icon"></i>
       My Cinema
     </router-link>
-    <router-link to="/alerts" class="router-link" exact>
+    <router-link to="/alerts" class="router-link">
       <i class="fa fa-fw fa-bell icon"></i>
       Alerts
     </router-link>
