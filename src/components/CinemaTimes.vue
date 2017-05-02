@@ -4,7 +4,7 @@
       <h1>{{ cinemaName }}</h1>
       <h2>Showtimes Today</h2>
       <div class="times">
-        <span v-for="time in times" :key="time" @click="addAlert(time)">{{ time }}</span>
+        <span v-for="time in times" :key="time" :class="{ disabled : isTimeInPast(time) }" @click="addAlert(time)">{{ time }}</span>
       </div>
     </template>
     <template v-if="loaded && !isOn">
@@ -40,7 +40,16 @@ export default {
   },
   methods: {
     addAlert (time) {
+      if (this.iTimeInPast(time)) return
       this.$root.$emit('add-alert', this.movie, time)
+    },
+    isTimeInPast (time) {
+      let d = new Date()
+      time = time.split(':')
+      if (d.getHours() > Number(time[0])) return true
+      if (d.getHours() < Number(time[0])) return false
+      if (d.getMinutes() > Number(time[1])) return true
+      return false
     }
   },
   mounted () {
@@ -100,6 +109,11 @@ export default {
       border-radius: 999px;
       background-color: rgba(0, 0, 0, .3);
       box-shadow: 0 0 6px rgba(255, 255, 255, .4);
+
+      &.disabled {
+        opacity: .2;
+        background-color: rgba(0, 0, 0, .5);
+      }
     }
   }
 }

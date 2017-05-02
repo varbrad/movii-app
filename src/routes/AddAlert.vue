@@ -28,7 +28,10 @@ export default {
   },
   methods: {
     addAlert () {
-      this.$root.$emit('confirm-alert', this.movie.id, this.movie.title, this.time, this.cinema)
+      let time = new Date()
+      let hrs = this.time.split(':')
+      time.setHours(Number(hrs[0]), Number(hrs[1]), 0, 0)
+      this.$root.$emit('confirm-alert', this.movie.id, this.movie.title, time, this.cinema)
       this.$router.replace('/alerts')
     }
   },
