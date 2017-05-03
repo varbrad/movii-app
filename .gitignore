@@ -39,5 +39,3 @@ jspm_packages
 platforms
 plugins
 hooks
-www/*.js
-www/*.js.map
