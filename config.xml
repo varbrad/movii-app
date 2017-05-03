@@ -35,7 +35,7 @@
     <preference name="phonegap-version" value="cli-6.0.0"/>
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="StatusBarBackgroundColor" value="#ff3b6b" />
+    <preference name="StatusBarBackgroundColor" value="#cf2b5b" />
     <preference name="StatusBarStyle" value="blacktranslucent" />
     <plugin name="cordova-plugin-splashscreen" />
     <plugin name="cordova-plugin-statusbar" />
