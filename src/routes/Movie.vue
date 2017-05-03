@@ -1,6 +1,6 @@
 <template>
   <div class="movie" v-if="movie">
-    <bar-link :text="movie.title"></bar-link>
+    <bar-link :text="movie.title" icon="fa-film"></bar-link>
     <div class="content">
       <movie-details :movie="movie"></movie-details>
       <cinema-times :movie="movie"></cinema-times>

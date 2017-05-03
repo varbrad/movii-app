@@ -1,15 +1,15 @@
 <template>
   <transition name="fade">
-    <div class="cinema-card" @click="gotoMovie">
+    <div class="cinema-card">
       <div class="info">
-        <div class="poster" :style="'background-image:url(https://image.tmdb.org/t/p/w160_and_h240_bestv2' + (movie ? movie.poster_path : '') + ')'"></div>
+        <div class="poster" @click="gotoMovie" :style="'background-image:url(https://image.tmdb.org/t/p/w160_and_h240_bestv2' + (movie ? movie.poster_path : '') + ')'"></div>
         <div class="info">
-          <span class="title">{{ movie ? movie.title : movieData.title }}</span>
+          <span class="title" @click="gotoMovie">{{ movie ? movie.title : movieData.title }}</span>
           <div class="showtimes">
-            <span v-for="time in movieData.time" :class="{ disabled : isTimeInPast(time) }">{{ time }}</span>
+            <span v-for="time in movieData.time" :class="{ disabled : isTimeInPast(time) }" @click="addAlert(time)">{{ time }}</span>
           </div>
         </div>
-        <rating-circle v-if="movie" :rating="movie.vote_average"></rating-circle>
+        <rating-circle @click="gotoMovie" v-if="movie" :rating="movie.vote_average"></rating-circle>
       </div>
     </div>
   </transition>
@@ -47,6 +47,10 @@ export default {
       if (d.getHours() < Number(time[0])) return false
       if (d.getMinutes() > Number(time[1])) return true
       return false
+    },
+    addAlert (time) {
+      if (this.isTimeInPast(time)) return
+      this.$root.$emit('add-alert', this.movie, time)
     }
   },
   mounted () {

@@ -1,7 +1,7 @@
 <template>
   <div class="featured">
     <template v-if="loaded">
-      <bar-link text="Featured"></bar-link>
+      <bar-link text="Featured" icon="fa-certificate"></bar-link>
       <div class="content">
         <template v-for="movie in popularMovies">
           <movie-card :movie="movie"></movie-card>

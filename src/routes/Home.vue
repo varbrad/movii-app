@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <template v-if="myCinema">
-      <bar-link text="On Today"></bar-link>
+      <bar-link text="On Today" icon="fa-calendar-check-o"></bar-link>
       <template v-if="loaded">
         <div class="content">
           <template v-for="movie in movies">

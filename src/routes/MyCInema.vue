@@ -1,6 +1,6 @@
 <template>
   <div class="my-cinema">
-    <bar-link text="My Cinema"></bar-link>
+    <bar-link text="My Cinema" icon="fa-ticket"></bar-link>
     <full-spinner v-if="fetching && !error" :text="fetchingMessage"></full-spinner>
     <error-report v-if="error && !fetching" @button="reload" :text="errorMessage" icon="fa-exclamation-triangle"></error-report>
     <div v-if="!fetching && !error" class="content" :class="{ centerMe: cinemas == null}">

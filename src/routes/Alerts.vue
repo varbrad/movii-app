@@ -1,6 +1,6 @@
 <template>
   <div class="alerts">
-    <bar-link text="Alerts"></bar-link>
+    <bar-link text="Alerts" icon="fa-bell"></bar-link>
     <div class="content">
       <div v-for="alert in $root.alerts" class="alert" @click="tryDelete(alert)">
         <i class="fa fa-fw fa-bell"></i>
@@ -46,7 +46,7 @@ export default {
   methods: {
     formatTime (time) {
       let t = new Date(time)
-      return t.getHours() + ':' + t.getMinutes()
+      return (t.getHours() < 10 ? '0' + t.getHours() : t.getHours()) + ':' + (t.getMinutes() < 10 ? '0' + t.getMinutes() : t.getMinutes())
     },
     deleteAlert () {
       this.$root.$emit('delete-alert', this.modalAlert)

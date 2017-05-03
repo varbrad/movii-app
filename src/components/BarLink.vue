@@ -1,6 +1,6 @@
 <template>
   <div class="bar-link" @click="gotoLink">
-    <p class="full-flex">{{ text }}</p>
+    <p class="full-flex"><i v-if="icon" class="fa fa-fw" :class="icon"></i> {{ text }}</p>
     <p v-if="to"><i class="fa fa-chevron-right"></i></p>
   </div>
 </template>
@@ -8,7 +8,7 @@
 <script>
 export default {
   name: 'BarLink',
-  props: ['text', 'to'],
+  props: ['text', 'to', 'icon'],
   methods: {
     gotoLink: function () {
       if (this.to) this.$router.push(this.to)

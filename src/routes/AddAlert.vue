@@ -1,6 +1,6 @@
 <template>
   <div class="add-alert">
-    <bar-link text="Add Alert"></bar-link>
+    <bar-link text="Add Alert" icon="fa-bell-o"></bar-link>
     <div class="content" v-if="movie">
       <movie-card :movie="movie" :click-enabled="false"></movie-card>
       <p class="info">Starting today at<br><span class="big">{{ time }}</span><br>at<br><span class="big">{{ cinema }}</span></p>
