@@ -24,7 +24,7 @@
     </platform>
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="StatusBarBackgroundColor" value="#263238" />
+    <preference name="StatusBarBackgroundColor" value="#ff3b6b" />
     <preference name="StatusBarStyle" value="blacktranslucent" />
     <plugin name="cordova-plugin-splashscreen" />
     <plugin name="cordova-plugin-statusbar" />
